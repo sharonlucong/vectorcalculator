@@ -1,0 +1,39 @@
+/* app css stylesheet */
+
+body {
+    padding-top: 70px;
+}
+
+.sidebar {
+    height: 80%;
+    width: 15%;
+    position: fixed;
+    word-wrap: break-word;
+    overflow: auto;
+}
+
+.errorHint {
+    color: #A94442;
+}
+
+.bigscreen {
+    display: block;
+}
+
+form input {
+    min-width: 200px;
+}
+
+.list-group-item-heading {
+    text-align: center;
+}
+
+.sidebar .table th {
+    color: rgb(138, 138, 138);
+}
+
+@media screen and (max-width: 1161px) {
+  .bigscreen {
+    display: none;
+  }
+}

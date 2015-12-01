@@ -1,0 +1,92 @@
+<div ng-controller="mathCtrl">
+    <div class="panel-group" id="maths" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#maths" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    Math Operations
+                    <span class="glyphicon glyphicon-triangle-bottom pull-right" aria-hidden="true"></span>
+                </a>
+            </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="mathRadios" id="mathRadios1" value="math1" ng-model="mathRadio" checked> Unlimited length (>=1)
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" ng-model="mathRadio" name="mathRadios" id="mathRadios2" value="math2"> Limited length (>=4)
+                                </label>
+                            </div>
+                            <form ng-show="mathRadio === 'math2'" class="form-group form-inline">
+                                <label for="operationLength">Math Operations Length: </label>
+                                <input id="opLen" ng-model="operationLength" type="number" class="form-control" placeholder="min length is 4" min="4" max="50">
+                                <button ng-click="submitLen()" class="btn btn-default">Confirm</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8 col-md-8">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Operator</th>
+                                        <th>Operand</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="elem in mathOperations track by $index">
+                                        <td>
+                                            <select class="form-control" ng-model="mathOperations[$index].op">
+                                                <option>+</option>
+                                                <option>*</option>
+                                                <option>sqrt</option>
+                                                <option>pow</option>
+                                            </select>
+                                        </td>
+                                        <td ng-class="{'has-error': !isNumber(mathOperations[$index].operand) && mathOperations[$index].op != 'sqrt'}">
+                                            <input type="number" step="any" class="form-control" placeholder="Operand" ng-model="mathOperations[$index].operand" ng-disabled="mathOperations[$index].op == 'sqrt'">
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-default" ng-click="removeItem($index)">-</button>
+                                            <button type="button" class="btn btn-default" ng-click="addItem($index)">+</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-default" ng-disabled="!mathOperations || mathOperations.length==0 || !inputNums || inputNums.length==0 || !validInputs || !validMath" ng-click="compute()">Compute</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-group" id="results" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div id="headingThree" class="panel-heading">
+                <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#results" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                    Result
+                    <span class="glyphicon glyphicon-triangle-bottom pull-right" aria-hidden="true"></span>
+                </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    {{res}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

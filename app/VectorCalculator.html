@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vector Calculator</title>
+    <meta name="viewport" content="width=device-width" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.4.0/math.min.js"></script>
+    <script src="app.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/services.js"></script>
+</head>
+
+<body ng-app="myCalculator">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Vector Calculator</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" ng-controller="resCtrl">
+        <div class="row">
+            <div class="bigscreen col-md-2 col-sm-2">
+                <div ng-include="'partials/sidebar_tmp.html'">                    
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-10">
+                <div class="row">
+                    <div ng-include="'partials/input_tmp.html'" class="col-md-12 col-sm-12 col-xs-12">
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-include="'partials/math_tmp.html'" class="col-md-12 col-sm-12 col-xs-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

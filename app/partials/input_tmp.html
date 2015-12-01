@@ -1,0 +1,55 @@
+<div ng-controller="inputCtrl" class="panel-group" id="inputs" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#inputs" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Input
+          <span class="glyphicon glyphicon-triangle-bottom pull-right" aria-hidden="true"></span>
+        </a>
+      </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="inputRadios" id="inputRadios1" value="input1" ng-model="inputRadio" checked> Unlimited length (>=1)
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="inputRadios" id="inputRadios2" value="input2" ng-model="inputRadio"> Limited length (>=5)
+                            </label>
+                        </div>
+                        <form ng-show="inputRadio === 'input2'" name="myInputLen" class="form-group form-inline">
+                            <label for="inputLen">Vector Length: </label>
+                            <input id="inputLen" ng-model="inputLength" type="number" class="form-control" placeholder="min length is 5" min="5" max="50">
+                            <button ng-click="submitLen()" class="btn btn-default">Confirm</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ng-repeat="key in inputNums track by $index">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <label>Vector Element:</label>
+                                    <div class="input-group" ng-class="{'has-error': !isNumber(inputNums[$index])}">
+                                        <input type="number" name="inputElem" step="any" class="form-control" ng-model="inputNums[$index]">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" data-toggle="dropdown" ng-click="removeItem($index)">-
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-toggle="dropdown" ng-click="addItem($index)">+</button>
+                                        </span>
+                                    </div>
+                                    <span class="errorHint" ng-show="!isNumber(inputNums[$index])">Invalid Input</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

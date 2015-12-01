@@ -1,0 +1,36 @@
+<div class="sidebar">
+    <div class="list-group">
+        <div class="list-group-item">
+            <a ng-click="scrollTo('inputs')"><h5 class="list-group-item-heading">Input</h5></a>
+            <p class="list-group-item-text">{{inputs}}</p>
+        </div>
+        <div class="list-group-item">
+            <a ng-click="scrollTo('maths')"><h5 class="list-group-item-heading">Math Operations</h5></a>
+            <label class="radio-inline">
+                <input type="radio" name="showInfo" id="hide" value="2" ng-model="showMath" checked> hide
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="showInfo" id="show" value="1" ng-model="showMath"> show
+            </label>
+            <table ng-show="showMath == '1'" class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Operand</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="op in ops">
+                        <td>{{op.op}}</td>
+                        <td>
+                            <div style="width: 70px;">{{op.operand}}</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="list-group-item">
+            <a ng-click="scrollTo('results')"><h5 class="list-group-item-heading">Result</h5></a> {{res}}
+        </div>
+    </div>
+</div>
